@@ -86,3 +86,44 @@ By focusing on **linked lists** (for dynamic insertion/deletion) and **recursion
 ## Submission
 Once the lab is complete, all tests are passing, and you've pushed the completed code to 
 your forked repo on GitHub, submit your GitHub repo through Canvas using CodeGrade.
+
+---
+
+## How to Run
+
+### Requirements
+- Python 3.8+
+
+### Run the demo
+```bash
+python3 main.py
+```
+This builds a sample employee ID roster, then demonstrates `recursive_sum`,
+`recursive_search`, and `recursive_reverse`, printing the list before and
+after each operation.
+
+### Run the tests
+```bash
+python3 -m pytest tests/ -v
+```
+
+## Interpreting the Output
+
+- **`recursive_sum`** — prints the total of all IDs currently in the list.
+- **`recursive_search`** — prints whether a given ID was found in the list.
+- **`recursive_reverse`** — reverses the list in-place; the roster is
+  displayed both before and after so you can confirm the order flipped.
+
+## Design Notes
+
+- **`Node`** stores `data` and a `next` reference to the following node (or
+  `None` at the end of the list).
+- **`LinkedList`** holds the `head` reference and exposes `insert_at_front`,
+  `insert_at_end`, `recursive_sum`, `recursive_reverse`, `recursive_search`,
+  and `display`.
+- Each recursive method is implemented as a small inner helper function that
+  takes the current node (and, for reverse, the previous node) as an
+  argument, cleanly separating the base case (empty/None node) from the
+  recursive case. Recursion was chosen over iteration here specifically to
+  demonstrate how each operation maps onto the list's own recursive
+  structure — a list is either empty or a node plus a smaller list.
